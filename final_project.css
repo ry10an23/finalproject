@@ -20,5 +20,9 @@
     margin: auto;
     top: 20%;
 }
+
+#courses-select {
+    display: none;
+}
 /* ここまで */
 
