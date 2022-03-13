@@ -11,7 +11,7 @@
     <button type="button">Register</button>
     <div class="regiModal">
         <div class="regiModal_box">
-            <form action="post">
+            <form action="">
                 ID: <input type="text"><br>
                 Username: <input type="text" id="name"><br>
                 Email: <input type="text" id="email"><br>
@@ -22,6 +22,7 @@
                 <input type="radio" name="example" value="Career">Career classes
                 <select name="courses" id="courses-select">
                 </select>
+                <button type="submit" onclick="confirmForm(this);">Registration</button>
             </form>
         </div>
     </div>
@@ -29,7 +30,7 @@
     <button type="button">LOGIN</button>
     <div class="loginModal">
         <div class="loginModal_box">
-            <form action="post">
+            <form action="">
                 Username: <input type="text" placeholder="Username"><br>
                 Password: <input type="password" placeholder="password"><br>
                 <input type="button" value="LOGIN">
