@@ -1,13 +1,18 @@
 /* Modal boxのデザイン ここから*/
-.regiModal, .loginModal {
+.loginModal, .regiModal {
     background-color: lightgray;
     opacity: .8;
     width: 100%;
     height: 100%;
+    position: fixed;
+    z-index: 1;
+    overflow: auto;
+    left:0;
+    top:0;
     display: none;
 }
 
-.regiModal_box, .loginModal_box {
+.loginModal_box, .regiModal_box {
     position: relative;
     width: 30%;
     height: 40%;
