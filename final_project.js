@@ -28,6 +28,7 @@ regiBtn.addEventListener("click",()=>{
 
 let parent = document.getElementById("courses-select");
 let radioBtns = document.querySelectorAll("input[type=radio]");
+let inputBoxes = document.getElementsByTagName("input");
 console.log(radioBtns);
 
 let EnglsihClasses = ["ESL", "TOEFL", "IELTS"];
@@ -53,6 +54,26 @@ for(let i=0;i<radioBtns.length;i++){
                 break;
         }
     })
+}
+
+//************** Form Alert **************
+let confirmForm = () => {
+    if(!formColor(inputBoxes)) {
+        alert("Please fill in the information.");
+    }
+}
+
+let formColor = (inputBoxes) => {
+    let flag = true;
+    for(let i=0; i<inputBoxes.length; i++) {
+        if(inputBoxes[i].value == "") {
+            inputBoxes[i].style.backgroundColor = "salmon";
+            flag = false;
+        } else {
+            inputBoxes[i].style.backgroundColor = "white";
+        }
+    }
+    return flag;
 }
 
 //************** Students Class (PARENT) **************
@@ -162,3 +183,5 @@ class CareerStudents extends Students {
         
     }
 }
+
+let 
