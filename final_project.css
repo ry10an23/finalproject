@@ -1,0 +1,19 @@
+/* Modal boxのデザイン ここから*/
+.regiModal, .loginModal {
+    background-color: lightgray;
+    opacity: .8;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.regiModal_box, .loginModal_box {
+    position: relative;
+    width: 30%;
+    height: 40%;
+    background-color: white;
+    margin: auto;
+    top: 20%;
+}
+/* ここまで */
+

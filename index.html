@@ -5,19 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Project</title>
+    <link rel="stylesheet" href="/final_project.css">
 </head>
 <body>
-    <button type="button">REGISTER</button>
+    <button type="button">Register</button>
     <div class="regiModal">
         <div class="regiModal_box">
-            Register Modal Box
+            <form action="post">
+                ID: <input type="text"><br>
+                Username: <input type="text" id="name"><br>
+                Email: <input type="text" id="email"><br>
+                Password: <input type="password" id="password"><br>
+                GPA: <input type="text" id="gpa"><br>
+
+                <input type="radio" name="example" value="English" checked>English classes
+                <input type="radio" name="example" value="Career">Career classes
+                <select name="courses" id="courses-select">
+                </select>
+            </form>
         </div>
     </div>
+
     <button type="button">LOGIN</button>
     <div class="loginModal">
         <div class="loginModal_box">
-            Login Modal Box
+            <form action="post">
+                Username: <input type="text" placeholder="Username"><br>
+                Password: <input type="password" placeholder="password"><br>
+                <input type="button" value="LOGIN">
+            </form>
         </div>
     </div>
+    <body>
+
 </body>
+<script src="/final_project.js"></script>
 </html>
