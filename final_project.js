@@ -1,17 +1,5 @@
 
 //************** MODAL BOX **************
-let loginBtn = document.getElementsByTagName("button")[1];
-let loginModal = document.querySelectorAll("div.loginModal")[0];
-window.addEventListener("click", (event) => {
-    if(event.target == loginModal) {
-        loginModal.style.display = "none";
-    }
-})
-loginBtn.addEventListener("click",()=>{
-    loginModal.style.display = "block";
-})
-
-
 let regiBtn = document.getElementsByTagName("button")[0];
 let regiModal = document.querySelectorAll("div.regiModal")[0];
 window.addEventListener("click", (event) => {
@@ -21,6 +9,17 @@ window.addEventListener("click", (event) => {
 })
 regiBtn.addEventListener("click",()=>{
     regiModal.style.display = "block";
+})
+
+let loginBtn = document.getElementsByTagName("button")[2];
+let loginModal = document.querySelectorAll("div.loginModal")[0];
+window.addEventListener("click", (event) => {
+    if(event.target == loginModal) {
+        loginModal.style.display = "none";
+    }
+})
+loginBtn.addEventListener("click",()=>{
+    loginModal.style.display = "block";
 })
 
 
@@ -56,7 +55,7 @@ for(let i=0;i<radioBtns.length;i++){
     })
 }
 
-//************** Form Alert **************
+//************** Form Alert / Invalid Key**************
 let confirmForm = () => {
     if(!formColor(inputBoxes)) {
         alert("Please fill in the information.");
@@ -65,7 +64,7 @@ let confirmForm = () => {
 
 let formColor = (inputBoxes) => {
     let flag = true;
-    for(let i=0; i<inputBoxes.length; i++) {
+    for(let i=0; i<6; i++) {
         if(inputBoxes[i].value == "") {
             inputBoxes[i].style.backgroundColor = "salmon";
             flag = false;
@@ -75,6 +74,44 @@ let formColor = (inputBoxes) => {
     }
     return flag;
 }
+
+//******* Invalid Key *******
+
+// ID 
+inputBoxes[0].addEventListener("keypress", (event) =>{
+    if(!(event.keyCode >= 48 && event.keyCode <= 57)) {
+        event.preventDefault();
+    }
+});
+
+// Username
+inputBoxes[1].addEventListener("keypress", (event) =>{
+    if(!((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122) || (event.keyCode >= 33 && event.keyCode <= 57))) {
+        event.preventDefault();
+    }
+});
+
+// Email
+inputBoxes[2].addEventListener("keypress", (event) =>{
+    if(!((event.keyCode >= 97 && event.keyCode <= 122) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode == 64))) {
+        event.preventDefault();
+    }
+});
+
+// Password
+inputBoxes[3].addEventListener("keypress", (event) =>{
+    if(!((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122) || (event.keyCode >= 33 && event.keyCode <= 57))) {
+        event.preventDefault();
+    }
+});
+
+// GPA
+inputBoxes[4].addEventListener("keypress", (event) =>{
+    if(!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode === 46))) {
+        event.preventDefault();
+    }
+});
+
 
 //************** Students Class (PARENT) **************
 let engClass = ["ESL", "TOFEL", "IELTS"];
@@ -184,4 +221,4 @@ class CareerStudents extends Students {
     }
 }
 
-let 
+
