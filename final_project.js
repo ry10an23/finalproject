@@ -97,6 +97,7 @@ let logInFormColor = (loginInputBoxes) => {
 
 //******* Invalid Key *******
 
+//** Register Button **//
 // ID 
 inputBoxes[0].addEventListener("keypress", (event) =>{
     if(!(event.keyCode >= 48 && event.keyCode <= 57)) {
@@ -132,18 +133,33 @@ inputBoxes[4].addEventListener("keypress", (event) =>{
     }
 });
 
+//** Login Button **//
+
+// Login - Username
+inputBoxes[7].addEventListener("keypress", (event) =>{
+    if(!((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122) || (event.keyCode >= 33 && event.keyCode <= 57))) {
+        event.preventDefault();
+    }
+});
+
+// Login - Password
+inputBoxes[8].addEventListener("keypress", (event) =>{
+    if(!((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122) || (event.keyCode >= 33 && event.keyCode <= 57))) {
+        event.preventDefault();
+    }
+});
 
 //************** Students Class (PARENT) **************
 let engClass = ["ESL", "TOFEL", "IELTS"];
 let careerClass = ["WD", "UI", "UX", "HM", "DM" ];
 
 class Students {
-    constructor(id, name, email, password ,gpa) {
+    constructor(id, name, email, password) {
         this.id = id;
         this.name= name;
         this.email = email;
         this.password = password;
-        this.gpa = gpa;
+        // this.gpa = gpa;
     }
     
     get ID() {
@@ -174,20 +190,16 @@ class Students {
         this.password = newPassword
     }
 
-    get GPA() {
-        return this.gpa
-    }
-    set GPA(newGPA) {
-        this.gpa = newGPA
-    }
+
 }
 
 //************** EslStudents Class (CHILD) **************
 class EslStudents extends Students {
-    constructor(id, name, email, password, courseNumber, courseCollection ,gpa) {
-        super(id, name, email, password ,gpa);
+    constructor(id, name, email, password, courseNumber, courseCollection, gpa) {
+        super(id, name, email, password);
         this.courseNumber = courseNumber;
         this.courseCollection = courseCollection;
+        this.gpa = gpa;
     }
     get CourseNumber() {
         return this.courseNumber;
@@ -201,6 +213,13 @@ class EslStudents extends Students {
     set CourseCollection(newCourseCollection) {
         this.courseCollection = newCourseCollection;
     }
+    get GPA() {
+        return this.gpa
+    }
+    set GPA(newGPA) {
+        this.gpa = newGPA
+    }
+
     getGPA() {
 
     }
@@ -214,9 +233,10 @@ class EslStudents extends Students {
 //************** CareerStudents Class (CHILD) **************
 class CareerStudents extends Students {
     constructor(id, name, email, password, courseNumber, courseCollection ,gpa) {
-        super(id, name, email, password ,gpa);
+        super(id, name, email, password);
         this.courseNumber = courseNumber;
         this.courseCollection = courseCollection;
+        this.gpa = gpa;
     }
     get CourseNumber() {
         return this.courseNumber;
@@ -230,6 +250,13 @@ class CareerStudents extends Students {
     set CourseCollection(newCourseCollection) {
         this.courseCollection = newCourseCollection;
     }
+
+    get GPA() {
+        return this.gpa
+    }
+    set GPA(newGPA) {
+        this.gpa = newGPA
+    }
     getGPA() {
 
     }
@@ -240,5 +267,3 @@ class CareerStudents extends Students {
         
     }
 }
-
-
