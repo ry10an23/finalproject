@@ -28,6 +28,8 @@ loginBtn.addEventListener("click",()=>{
 let parent = document.getElementById("courses-select");
 let radioBtns = document.querySelectorAll("input[type=radio]");
 let inputBoxes = document.getElementsByTagName("input");
+let loginInputBoxes = document.getElementsByClassName("loginform");
+
 console.log(radioBtns);
 
 let EnglsihClasses = ["ESL", "TOEFL", "IELTS"];
@@ -75,6 +77,24 @@ let formColor = (inputBoxes) => {
     return flag;
 }
 
+let confirmLoginForm = () => {
+    if(!logInFormColor(loginInputBoxes)) {
+        alert("Please fill in the information.");
+    }
+}
+let logInFormColor = (loginInputBoxes) => {
+    let flag = true;
+    for(let i=0; i<2; i++) {
+        if(loginInputBoxes[i].value == "") {
+            loginInputBoxes[i].style.backgroundColor = "salmon";
+            flag = false;
+        } else {
+            loginInputBoxes[i].style.backgroundColor = "white";
+        }
+    }
+    return flag;
+}
+
 //******* Invalid Key *******
 
 // ID 
@@ -93,7 +113,7 @@ inputBoxes[1].addEventListener("keypress", (event) =>{
 
 // Email
 inputBoxes[2].addEventListener("keypress", (event) =>{
-    if(!((event.keyCode >= 97 && event.keyCode <= 122) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode == 64))) {
+    if(!((event.keyCode >= 97 && event.keyCode <= 122) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode == 64) || (event.keyCode == 46))) {
         event.preventDefault();
     }
 });
