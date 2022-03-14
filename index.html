@@ -14,7 +14,7 @@
             <form action="">
                 ID: <input type="text"><br>
                 Username: <input type="text" id="name"><br>
-                Email: <input type="text" id="email"><br>
+                Email: <input type="email" id="email"><br>
                 Password: <input type="password" id="password"><br>
                 GPA: <input type="text" id="gpa" maxlength="3"><br>
 
@@ -31,9 +31,9 @@
     <div class="loginModal">
         <div class="loginModal_box">
             <form action="">
-                Username: <input type="text" placeholder="Username"><br>
-                Password: <input type="password" placeholder="password"><br>
-                <input type="button" value="LOGIN">
+                Username: <input type="text" placeholder="Username" class="loginform"><br>
+                Password: <input type="password" placeholder="password" class="loginform"><br>
+                <input type="button" value="LOGIN" onclick="confirmLoginForm(this);">
             </form>
         </div>
     </div>
