@@ -28,6 +28,9 @@ loginBtn.addEventListener("click",()=>{
 let parent = document.getElementById("courses-select");
 let radioBtns = document.querySelectorAll("input[type=radio]");
 let inputBoxes = document.getElementsByTagName("input");
+let submitBtn = document.getElementsByTagName("button")[1];
+let submitForm = document.getElementsByTagName("form")[0];
+    // submitBtn.disabled = true; //It's an unclickable by defalut.
 let loginInputBoxes = document.getElementsByClassName("loginform");
 
 console.log(radioBtns);
@@ -56,6 +59,14 @@ for(let i=0;i<radioBtns.length;i++){
         }
     })
 }
+
+submitBtn.addEventListener("click", () => {
+    for(let i=0; i<4; i++){
+        if(inputBoxes[i].value() == ""){
+            submitForm.preventDefault();
+        }
+    }
+})
 
 //************** Form Alert / Invalid Key**************
 let confirmForm = () => {
@@ -153,6 +164,14 @@ inputBoxes[8].addEventListener("keypress", (event) =>{
 let engClass = ["ESL", "TOFEL", "IELTS"];
 let careerClass = ["WD", "UI", "UX", "HM", "DM" ];
 
+let courseColection = { //どう使ったらいい？？
+    WD: ["html", "CSS", "JS", "JS2", "PHP", "CMS"],
+    UI: ["Photoshop", "Swift", "Java", "Javascript", "html", "CSS"],
+    UX: ["html", "CSS", "JS", "JS2", "PHP", "CMS"],
+    HM: ["Cultural Communication", "Sales & Marketing", "Tourism & Hospitality", "Management", "Tourism", "Business "],
+    DM: ["Marketing", "Digital Marketing", "JS", "Web Design", "PHP", "CMS"],
+}
+
 class Students {
     constructor(id, name, email, password) {
         this.id = id;
@@ -194,6 +213,11 @@ class Students {
 }
 
 //************** EslStudents Class (CHILD) **************
+
+let ESLcourse = ["ESL Reading",  "ESL Listening", "ESL Writing"]
+let Tofelcourse = ["Tofel Reading",  "Tofel Listening", "Tofel Writing"]
+let IELTScourse = ["IELTS Reading",  "IELTS Listening", "IELTS Writing"]
+
 class EslStudents extends Students {
     constructor(id, name, email, password, courseNumber, courseCollection, gpa) {
         super(id, name, email, password);
@@ -220,13 +244,16 @@ class EslStudents extends Students {
         this.gpa = newGPA
     }
 
-    getGPA() {
-
+    getGPAEng() {
+        return this.gpa;
     }
-    setCourse() {
-
+    setCourseEng(num, array) {
+        for(let i=0; i<num; i++){
+            // wdArray[i]
+            return array[i];
+        }
     }
-    avgGPA() {
+    avgGPAEng() {
 
     }
 }
@@ -257,13 +284,33 @@ class CareerStudents extends Students {
     set GPA(newGPA) {
         this.gpa = newGPA
     }
-    getGPA() {
-
+    getGPACareer() {
+        return this.gpa;
     }
-    setCourse() {
-
+    setCourseCareer(num, array) {
+        for(let i=0; i<num; i++){
+            // wdArray[i]
+            return array[i];
+        }
     }
-    avgGPA() {
+    avgGPACareer() {
         
     }
+
+    
 }
+
+//1⃣
+// let WD = new Map([1001: ],[1002: "css"]);
+// let WD = new Map(["html", 1001],[ "css", 1002],[ "JS", 1003],[ "JS2", 1004],[ "PHP", 1005],[ "CMS", 1006]);
+// let WD = new Map([[1001, "html"],[ 1002, "css"],[ 1003, "JS"],[1004, "JS2"],[ 1005, "PHP"],[ 1006, "CMS"]]);
+// WD.set(WD.get(1001), 3.5);
+// console.log(WD.get("html"));
+
+//2⃣
+let StudentA = new CareerStudents(1234, "Bob", "example@gmail.com", "abc123", 1001, "html", 3); 
+console.log(StudentA.setCourseCareer(2, courseColection.WD));
+console.log(courseColection.WD[5]);
+
+let StudentB = new EslStudents(12345, "Bob", "example1@gmail.com", "abc456", 2001, "ESL Reading", 5); 
+console.log(StudentB.setCourseEng(2, ESLcourse));
